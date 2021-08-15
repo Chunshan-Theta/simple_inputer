@@ -1,0 +1,46 @@
+swagger: "2.0"
+info:
+  description: ""
+  version: "1.0.0"
+  title: "資料匯入介面"
+basePath: "/v1"
+paths:
+  /data:
+      get:
+        summary: "取出資料"
+        description: ""
+        operationId: "get_data"
+        produces:
+        - "text/csv"
+        responses:
+          "200":
+            description: "成功"
+        x-swagger-router-controller: "swagger_server.controllers.default_controller"
+      post:
+        summary: "輸入資料"
+        description: ""
+        operationId: "add_data"
+        consumes:
+        - "application/x-www-form-urlencoded"
+        produces:
+        - "application/json"
+        parameters:
+        - name: "content"
+          in: "query"
+          description: "請填入文字內容"
+          required: true
+          type: "string"
+        - name: "label"
+          in: "query"
+          description: "請選擇該內容的分類"
+          required: true
+          type: "string"
+          enum:
+          - "經濟"
+          - "技術與安全"
+          - "倫理"
+          - "永續經營"
+        responses:
+          "405":
+            description: "輸入錯誤"
+        x-swagger-router-controller: "swagger_server.controllers.default_controller"
