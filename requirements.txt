@@ -5,3 +5,5 @@ tornado
 swagger-ui-bundle
 dnspython
 pymongo
+numpy
+AuthCore
